@@ -12,8 +12,8 @@ class Gen():
 
     def __init__(self):
         self.field = [[]]
-        self.height=0
-        self.width=0
+        self.height=5
+        self.width=5
 
         #accepts height and width of board,
         #creates randomly generated 2 dimensional list of tuples of 4 ints at passed in values as field
@@ -25,18 +25,19 @@ class Gen():
                     #self.height = width
                     #self.width = height
                     #return True
-                self.field[x].append((randint(0,1),randint(0,1),randint(0,1),randint(0,1)))
+                self.field[x].append((randint(0,100),randint(0,100),randint(0,100),randint(0,100)))
             if height > len(self.field):
                 self.field.append([])
         self.height = height
         self.width = width
         return True
 
-    def getTup(self, height, width, index=5):
-        if index == 5:
-            return self.field[height][width]
+    def getTup(self, height, width, index=4):
+        if index == 4:
+            return self.field[width][height]
         else:
-            return self.field[height][width][index]
+            print(index)
+            return self.field[width][height][index]
 
     def printField(self):
         for x in range(self.height):
@@ -47,15 +48,17 @@ class Gen():
 def main():
     level = Gen()
     print("input width")
-    width = int(input())
+    width = int(7)
     print("input height")
-    height = int(input())
+    height = int(5)  #height = int(input())
     level.generateField(height,width)
     level.printField()
-
-    height = int(input())
-    width = int(input())
-    index = int(input())
+    print("height")
+    height = int(input())-1
+    print("width")
+    width = int(input())-1
+    print("index")
+    index = int(input())-1
 
     print(level.getTup(height, width, index))
 
