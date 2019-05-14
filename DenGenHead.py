@@ -5,7 +5,7 @@ from random import randint
 # seed random number generator
 # generate some random numbers
 #print(randint(0,10), randint(0,10),randint(0,10))
-#system('pip install pyenchant')
+#system('pip install pyenchant'
 
 class Gen():
 
