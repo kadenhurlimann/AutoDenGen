@@ -2,6 +2,8 @@ import os
 from os import system, name
 from random import seed
 from random import randint
+import pygame
+
 # seed random number generator
 # generate some random numbers
 #print(randint(0,10), randint(0,10),randint(0,10))
@@ -85,6 +87,35 @@ class Gen():
         print(self.height)
 
 def main():
+
+
+    BLACK = (0, 0, 0)
+    WHITE = (255, 255, 255)
+    GREEN = (0, 255, 0)
+    RED = (255, 0, 0)
+
+
+
+
+    # Initialize pygame
+    pygame.init()
+
+    # Set the HEIGHT and WIDTH of the screen
+    WINDOW_SIZE = [255, 255]
+    screen = pygame.display.set_mode(WINDOW_SIZE)
+
+    # Set title of screen
+    pygame.display.set_caption("Array Backed Grid")
+
+    # Loop until the user clicks the close button.
+    done = False
+
+    # Used to manage how fast the screen updates
+    clock = pygame.time.Clock()
+
+
+
+
     level = Gen()
     print("input width")
     width = int(7)
@@ -93,12 +124,35 @@ def main():
     level.generateField(height,width)
     level.printField()
     direction = 'n'
-    while direction != 'k':
-        print(level.getTup(level.obX, level.obY, 4))
-        print(level.obX,level.obY)
-        print("direction")
-        direction = input()
-        print(level.movOb(direction))
+    # while direction != 'k':
+    #     screen.fill(BLACK)
+    #
+    #     # Draw the grid
+    #     for column in range(level.height):
+    #         for row in range(level.width):
+    #             color = WHIT
+    #             if grid[row][column] == 1:
+    #                 color = GREEN
+    #             pygame.draw.rect(screen,
+    #                              color,
+    #                              [(MARGIN + WIDTH) * column + MARGIN,
+    #                               (MARGIN + HEIGHT) * row + MARGIN,
+    #                               WIDTH,
+    #                               HEIGHT])
+    #
+    #     # Limit to 60 frames per second
+    #     clock.tick(60)
+    #
+    #     # Go ahead and update the screen with what we've drawn.
+    #     pygame.display.flip()
+
+
+
+    print(level.getTup(level.obX, level.obY, 4))
+    print(level.obX,level.obY)
+    print("direction")
+    direction = input()
+    print(level.movOb(direction))
     print("height")
     height = int(input())-1
     print("width")
