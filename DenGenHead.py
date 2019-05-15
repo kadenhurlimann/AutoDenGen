@@ -12,8 +12,10 @@ class Gen():
 
     def __init__(self):
         self.field = [[]]
-        self.height=5
-        self.width=5
+        self.obX = 1
+        self.obY = 1
+        self.height=7
+        self.width=7
 
         #accepts height and width of board,
         #creates randomly generated 2 dimensional list of tuples of 4 ints at passed in values as field
@@ -25,12 +27,48 @@ class Gen():
                     #self.height = width
                     #self.width = height
                     #return True
-                self.field[x].append((randint(0,100),randint(0,100),randint(0,100),randint(0,100)))
+                self.field[x].append((randint(0,1),randint(0,1),randint(0,1),randint(0,1)))
             if height > len(self.field):
                 self.field.append([])
         self.height = height
         self.width = width
         return True
+
+    def movOb(self, dir):
+        if dir == 'w':
+            if self.field[self.obY][self.obX][0] == 1:
+                self.obX = self.obX-1
+                return True
+
+            else:
+                return False
+
+        elif dir == 'n':
+            if self.field[self.obY][self.obX][1] == 1:
+                self.obY = self.obY-1
+                return True
+            else:
+                return False
+
+        elif dir == 'e':
+            if self.field[self.obY][self.obX][2] == 1:
+                self.obX = self.obX+1
+                return True
+
+            else:
+                return False
+
+        elif dir == 's':
+            if self.field[self.obY][self.obX][3] == 1:
+                self.obY = self.obY+1
+                return True
+
+            else:
+                return False
+
+        else:
+            return False
+
 
     def getTup(self, height, width, index=4):
         if index == 4:
@@ -50,9 +88,16 @@ def main():
     print("input width")
     width = int(7)
     print("input height")
-    height = int(5)  #height = int(input())
+    height = int(7)  #height = int(input())
     level.generateField(height,width)
     level.printField()
+    direction = 'n'
+    while direction != 'k':
+        print(level.getTup(level.obX, level.obY, 4))
+        print(level.obX,level.obY)
+        print("direction")
+        direction = input()
+        print(level.movOb(direction))
     print("height")
     height = int(input())-1
     print("width")
