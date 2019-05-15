@@ -16,6 +16,7 @@ class Gen():
         self.obY = 1
         self.height=7
         self.width=7
+        self.grid = ["<^v>00v"]
 
         #accepts height and width of board,
         #creates randomly generated 2 dimensional list of tuples of 4 ints at passed in values as field
